@@ -10,5 +10,5 @@ data class AlumnosRequest(
     val nombre: String,
 
     @field:NotNull(message = "El ID del curso es obligatorio")
-    val cursoId: Long
+    val cursoId: Int
 )

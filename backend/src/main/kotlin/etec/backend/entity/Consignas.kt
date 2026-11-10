@@ -14,7 +14,7 @@ import jakarta.persistence.Table
 class Consigna(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long? = null,
+    var id: Int? = null,
 
     @Column(nullable = false, length = 120)
     var titulo: String = "",

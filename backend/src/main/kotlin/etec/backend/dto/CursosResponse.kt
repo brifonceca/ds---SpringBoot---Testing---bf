@@ -3,13 +3,13 @@ package etec.backend.dto
 import etec.backend.entity.Curso
 
 data class CursosResponse(
-    val id: Long,
+    val id: Int,
     val nombre: String
 ) {
     companion object {
         fun fromEntity(c: Curso): CursosResponse =
             CursosResponse(
-                id = c.id ?: 0L,
+                id = c.id ?: 0,
                 nombre = c.nombre
             )
     }

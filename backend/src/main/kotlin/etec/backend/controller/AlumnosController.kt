@@ -22,7 +22,7 @@ class AlumnosController(
     }
 
     @GetMapping("/{id}")
-    fun obtenerPorId(@PathVariable id: Long): ResponseEntity<AlumnosResponse> {
+    fun obtenerPorId(@PathVariable id: Int): ResponseEntity<AlumnosResponse> {
         return ResponseEntity.ok(alumnosService.obtener(id))
     }
 

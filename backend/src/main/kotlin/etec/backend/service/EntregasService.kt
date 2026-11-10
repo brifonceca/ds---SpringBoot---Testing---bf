@@ -27,7 +27,7 @@ class EntregasService(
     }
 
     @Transactional(readOnly = true)
-    fun obtener(id: Long): EntregasResponse {
+    fun obtener(id: Int): EntregasResponse {
         val entrega = entregasRepository.findById(id)
             .orElseThrow { EntregaNoEncontradoException(id) }
         return EntregasResponse.fromEntity(entrega)

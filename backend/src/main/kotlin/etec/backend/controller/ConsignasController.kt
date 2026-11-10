@@ -22,7 +22,7 @@ class ConsignasController(
     }
 
     @GetMapping("/{id}")
-    fun obtenerPorId(@PathVariable id: Long): ResponseEntity<ConsignasResponse> {
+    fun obtenerPorId(@PathVariable id: Int): ResponseEntity<ConsignasResponse> {
         return ResponseEntity.ok(consignasService.obtener(id))
     }
 

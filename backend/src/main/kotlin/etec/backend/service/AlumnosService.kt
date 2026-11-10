@@ -24,7 +24,7 @@ class AlumnosService(
     }
 
     @Transactional(readOnly = true)
-    fun obtener(id: Long): AlumnosResponse {
+    fun obtener(id: Int): AlumnosResponse {
         val alumno = alumnosRepository.findById(id)
             .orElseThrow { AlumnoNoEncontradoException(id) }
         return AlumnosResponse.fromEntity(alumno)

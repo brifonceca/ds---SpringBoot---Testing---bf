@@ -3,7 +3,7 @@ package etec.backend.dto
 import etec.backend.entity.Entrega
 
 data class EntregasResponse(
-    val id: Long,
+    val id: Int,
     val nombre: String,
     val codigoEnviado: String?,
     val estado: String?,
@@ -13,7 +13,7 @@ data class EntregasResponse(
     companion object {
         fun fromEntity(e: Entrega): EntregasResponse =
             EntregasResponse(
-                id = e.id ?: 0L,
+                id = e.id ?: 0,
                 nombre = e.nombre,
                 codigoEnviado = e.codigoEnviado,
                 estado = e.estado,

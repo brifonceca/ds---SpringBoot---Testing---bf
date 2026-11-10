@@ -13,7 +13,7 @@ import java.math.BigDecimal
 class Curso(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long? = null,
+    var id: Int? = null,
 
     @Column(nullable = false, length = 120)
     var nombre: String = "",

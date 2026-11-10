@@ -17,8 +17,8 @@ data class EntregasRequest(
     val estado: String,
 
     @field:NotNull(message = "El ID del alumno es obligatorio")
-    val alumnoId: Long,
+    val alumnoId: Int,
 
     @field:NotNull(message = "El ID de la consigna es obligatorio")
-    val consignaId: Long
+    val consignaId: Int
 )

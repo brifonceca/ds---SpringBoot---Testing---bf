@@ -13,5 +13,5 @@ data class ConsignasRequest(
     val descripcion: String?,
 
     @field:NotNull(message = "El ID del curso es obligatorio")
-    val cursoId: Long
+    val cursoId: Int
 )
