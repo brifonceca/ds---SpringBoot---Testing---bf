@@ -1,9 +1,8 @@
 CREATE TABLE IF NOT EXISTS consignas (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     titulo VARCHAR(120) NOT NULL,
-    descripcion VARCHAR,
+    descripcion VARCHAR(255),
     cursos_id BIGINT NOT NULL,
 
     CONSTRAINT fk_cursos FOREIGN KEY (cursos_id) REFERENCES cursos(id) ON DELETE CASCADE
-
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

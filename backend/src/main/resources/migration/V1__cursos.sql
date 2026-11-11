@@ -1,6 +1,6 @@
 CREATE TABLE IF NOT EXISTS cursos (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(120) NOT NULL
+    nombre VARCHAR(120) NOT NULL,
     consignas_id BIGINT NOT NULL,
     anos_id BIGINT NOT NULL,
 

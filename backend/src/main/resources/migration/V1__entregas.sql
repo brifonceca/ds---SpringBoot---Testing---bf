@@ -7,6 +7,6 @@ CREATE TABLE IF NOT EXISTS entregas (
     consigna_id BIGINT NOT NULL,
 
 --  Relacion: entregas con estudiante y entregas a curso
-    CONSTRAINT fk_entrega_estudiante FOREIGN KEY (estudiante_id) REFERENCES estudiantes(id) ON DELETE CASCADE
+    CONSTRAINT fk_entrega_estudiante FOREIGN KEY (estudiante_id) REFERENCES estudiantes(id) ON DELETE CASCADE,
     CONSTRAINT fk_entrega_consigna FOREIGN KEY (consigna_id) REFERENCES consignas(id) ON DELETE CASCADE
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

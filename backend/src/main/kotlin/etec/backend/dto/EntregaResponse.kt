@@ -6,9 +6,11 @@ data class EntregasResponse(
     val id: Int,
     val nombre: String,
     val codigoEnviado: String?,
-    val estado: String?,
-    val alumnoNombre: String,
-    val consignaTitulo: String
+    val estado: String,
+    val estudianteId: Int?,
+    val estudianteNombre: String?,
+    val consignaId: Int?,
+    val consignaTitulo: String?
 ) {
     companion object {
         fun fromEntity(e: Entrega): EntregasResponse =
@@ -17,7 +19,9 @@ data class EntregasResponse(
                 nombre = e.nombre,
                 codigoEnviado = e.codigoEnviado,
                 estado = e.estado,
-                alumnoNombre = e.alumno?.nombre ?: "Sin alumno",
+                estudianteId = e.estudiante?.id,
+                estudianteNombre = e.estudiante?.nombre ?: "Sin estudiante",
+                consignaId = e.consigna?.id,
                 consignaTitulo = e.consigna?.titulo ?: "Sin consigna"
             )
     }

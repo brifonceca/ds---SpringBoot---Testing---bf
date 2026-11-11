@@ -1,8 +1,8 @@
 package etec.backend.repository
 
-import etec.backend.entity.Alumno
+import etec.backend.entity.Estudiante
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
 @Repository
-interface AlumnosRepository : JpaRepository<Alumno, Int>
+interface EstudiantesRepository : JpaRepository<Estudiante, Int>

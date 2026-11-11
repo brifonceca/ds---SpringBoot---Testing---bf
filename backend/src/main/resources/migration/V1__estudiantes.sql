@@ -3,5 +3,3 @@ CREATE TABLE IF NOT EXISTS estudiantes (
     nombre VARCHAR(120) NOT NULL,
 
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-

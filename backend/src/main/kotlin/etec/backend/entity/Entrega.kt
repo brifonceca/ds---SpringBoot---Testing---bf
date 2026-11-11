@@ -2,6 +2,7 @@ package etec.backend.entity
 
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
+import jakarta.persistence.FetchType
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
@@ -19,17 +20,17 @@ class Entrega(
     @Column(nullable = false, length = 120)
     var nombre: String = "",
 
-    @Column(name = "codigo_enviado")
+    @Column(name = "codigo_enviado", columnDefinition = "TEXT")
     var codigoEnviado: String? = null,
 
     @Column(length = 50)
-    var estado: String? = null,
+    var estado: String = "",
 
-    @ManyToOne // relacion muchas entregas q pertenecen a un solo alumno
-    @JoinColumn(name = "alumno_id", nullable = false)
-    var alumno: Alumno? = null,
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "estudiante_id", nullable = false)
+    var estudiante: Estudiante? = null,
 
-    @ManyToOne // relacion muchas entregas q responden a una consigna
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "consigna_id", nullable = false)
     var consigna: Consigna? = null
 )

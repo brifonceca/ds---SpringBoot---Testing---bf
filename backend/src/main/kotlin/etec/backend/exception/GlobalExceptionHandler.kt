@@ -18,12 +18,12 @@ data class ErrorResponse(
 @RestControllerAdvice
 class GlobalExceptionHandler {
 
-    @ExceptionHandler(AlumnoNoEncontradoException::class)
-    fun handleAlumnoNoEncontrado(ex: AlumnoNoEncontradoException): ResponseEntity<ErrorResponse> {
+    @ExceptionHandler(EstudianteNoEncontradoException::class)
+    fun handleEstudianteNoEncontrado(ex: EstudianteNoEncontradoException): ResponseEntity<ErrorResponse> {
         val body = ErrorResponse(
             status = HttpStatus.NOT_FOUND.value(),
             error = "Not Found",
-            message = ex.message ?: "Alumno no encontrado"
+            message = ex.message ?: "Estudiante no encontrado"
         )
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(body)
     }

@@ -1,14 +1,14 @@
 package etec.backend.service
 
 import etec.backend.dto.EntregasRequest
-import etec.backend.dto.EntregasResponse
+import etec.backend.dto.EntregaResponse
 import etec.backend.entity.Entrega
-import etec.backend.exception.AlumnoNoEncontradoException
-import etec.backend.exception.ConsignaNoEncontradoException
 import etec.backend.exception.EntregaNoEncontradoException
-import etec.backend.repository.AlumnosRepository
-import etec.backend.repository.ConsignasRepository
+import etec.backend.exception.EstudianteNoEncontradoException
+import etec.backend.exception.ConsignaNoEncontradoException
 import etec.backend.repository.EntregasRepository
+import etec.backend.repository.EstudiantesRepository
+import etec.backend.repository.ConsignasRepository
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
@@ -17,26 +17,26 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 class EntregasService(
     private val entregasRepository: EntregasRepository,
-    private val alumnosRepository: AlumnosRepository,
+    private val estudiantesRepository: EstudiantesRepository,
     private val consignasRepository: ConsignasRepository
 ) {
     @Transactional(readOnly = true)
-    fun listar(pageable: Pageable): Page<EntregasResponse> {
+    fun listar(pageable: Pageable): Page<EntregaResponse> {
         return entregasRepository.findAll(pageable)
-            .map { EntregasResponse.fromEntity(it) }
+            .map { EntregaResponse.fromEntity(it) }
     }
 
     @Transactional(readOnly = true)
-    fun obtener(id: Int): EntregasResponse {
+    fun obtener(id: Int): EntregaResponse {
         val entrega = entregasRepository.findById(id)
             .orElseThrow { EntregaNoEncontradoException(id) }
-        return EntregasResponse.fromEntity(entrega)
+        return EntregaResponse.fromEntity(entrega)
     }
 
     @Transactional
-    fun crear(req: EntregasRequest): EntregasResponse {
-        val alumno = alumnosRepository.findById(req.alumnoId)
-            .orElseThrow { AlumnoNoEncontradoException(req.alumnoId) }
+    fun crear(req: EntregasRequest): EntregaResponse {
+        val estudiante = estudiantesRepository.findById(req.estudianteId)
+            .orElseThrow { EstudianteNoEncontradoException(req.estudianteId) }
 
         val consigna = consignasRepository.findById(req.consignaId)
             .orElseThrow { ConsignaNoEncontradoException(req.consignaId) }
@@ -45,10 +45,10 @@ class EntregasService(
             nombre = req.nombre,
             codigoEnviado = req.codigoEnviado,
             estado = req.estado,
-            alumno = alumno,
+            estudiante = estudiante,
             consigna = consigna
         )
         val guardado = entregasRepository.save(nuevaEntrega)
-        return EntregasResponse.fromEntity(guardado)
+        return EntregaResponse.fromEntity(guardado)
     }
 }

@@ -6,15 +6,14 @@ import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 import jakarta.persistence.Table
-import java.math.BigDecimal
 
 @Entity
-@Table(name = "cursos")
-class Curso(
+@Table(name = "anos")
+class Ano(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Int? = null,
 
-    @Column(nullable = false, length = 120)
-    var nombre: String = "",
+    @Column(name = "curso_id", nullable = false)
+    var cursoId: Int = 0
 )
