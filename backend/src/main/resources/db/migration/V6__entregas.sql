@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS entregas (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(120) NOT NULL,
-    codigo_enviado VARCHAR,
+    codigo_enviado VARCHAR(120),
     estado VARCHAR(50),
     estudiante_id BIGINT NOT NULL,
     consigna_id BIGINT NOT NULL,

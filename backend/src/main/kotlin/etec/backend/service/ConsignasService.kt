@@ -1,7 +1,7 @@
 package etec.backend.service
 
 import etec.backend.dto.ConsignasRequest
-import etec.backend.dto.ConsignaResponse
+import etec.backend.dto.ConsignasResponse
 import etec.backend.entity.Consigna
 import etec.backend.exception.ConsignaNoEncontradoException
 import etec.backend.exception.CursoNoEncontradoException
@@ -18,20 +18,20 @@ class ConsignasService(
     private val cursosRepository: CursosRepository
 ) {
     @Transactional(readOnly = true)
-    fun listar(pageable: Pageable): Page<ConsignaResponse> {
+    fun listar(pageable: Pageable): Page<ConsignasResponse> {
         return consignasRepository.findAll(pageable)
-            .map { ConsignaResponse.fromEntity(it) }
+            .map { ConsignasResponse.fromEntity(it) }
     }
 
     @Transactional(readOnly = true)
-    fun obtener(id: Int): ConsignaResponse {
+    fun obtener(id: Int): ConsignasResponse {
         val consigna = consignasRepository.findById(id)
             .orElseThrow { ConsignaNoEncontradoException(id) }
-        return ConsignaResponse.fromEntity(consigna)
+        return ConsignasResponse.fromEntity(consigna)
     }
 
     @Transactional
-    fun crear(req: ConsignasRequest): ConsignaResponse {
+    fun crear(req: ConsignasRequest): ConsignasResponse {
         val curso = cursosRepository.findById(req.cursoId)
             .orElseThrow { CursoNoEncontradoException(req.cursoId) }
 
@@ -41,6 +41,6 @@ class ConsignasService(
             curso = curso
         )
         val guardado = consignasRepository.save(nuevaConsigna)
-        return ConsignaResponse.fromEntity(guardado)
+        return ConsignasResponse.fromEntity(guardado)
     }
 }

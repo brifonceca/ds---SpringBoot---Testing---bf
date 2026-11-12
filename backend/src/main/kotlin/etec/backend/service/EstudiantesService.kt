@@ -1,7 +1,7 @@
 package etec.backend.service
 
-import etec.backend.dto.EstudiantesRequest
-import etec.backend.dto.EstudianteResponse
+import etec.backend.dto.EstudiantesRequests
+import etec.backend.dto.EstudiantesResponse
 import etec.backend.entity.Estudiante
 import etec.backend.exception.EstudianteNoEncontradoException
 import etec.backend.repository.EstudiantesRepository
@@ -15,24 +15,24 @@ class EstudiantesService(
     private val estudiantesRepository: EstudiantesRepository
 ) {
     @Transactional(readOnly = true)
-    fun listar(pageable: Pageable): Page<EstudianteResponse> {
+    fun listar(pageable: Pageable): Page<EstudiantesResponse> {
         return estudiantesRepository.findAll(pageable)
-            .map { EstudianteResponse.fromEntity(it) }
+            .map { EstudiantesResponse.fromEntity(it) }
     }
 
     @Transactional(readOnly = true)
-    fun obtener(id: Int): EstudianteResponse {
+    fun obtener(id: Int): EstudiantesResponse {
         val estudiante = estudiantesRepository.findById(id)
             .orElseThrow { EstudianteNoEncontradoException(id) }
-        return EstudianteResponse.fromEntity(estudiante)
+        return EstudiantesResponse.fromEntity(estudiante)
     }
 
     @Transactional
-    fun crear(req: EstudiantesRequest): EstudianteResponse {
+    fun crear(req: EstudiantesRequests): EstudiantesResponse {
         val nuevoEstudiante = Estudiante(
             nombre = req.nombre
         )
         val guardado = estudiantesRepository.save(nuevoEstudiante)
-        return EstudianteResponse.fromEntity(guardado)
+        return EstudiantesResponse.fromEntity(guardado)
     }
 }
