@@ -15,10 +15,18 @@ import jakarta.persistence.Table
 class Curso(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Int? = null,
+    var id: Long? = null,
+
+    // Identificador legible para URLs (ej: "intro-programacion").
+    // El front lo usa para linkear a /materia/{slug}.
+    @Column(nullable = false, unique = true, length = 80)
+    var slug: String = "",
 
     @Column(nullable = false, length = 120)
     var nombre: String = "",
+
+    @Column(length = 255)
+    var descripcion: String? = null,
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "anos_id", nullable = false)

@@ -27,7 +27,7 @@ class InscripcionesService(
     }
 
     @Transactional(readOnly = true)
-    fun obtener(id: Int): InscripcionResponse {
+    fun obtener(id: Long): InscripcionResponse {
         val inscripcion = inscripcionesRepository.findById(id)
             .orElseThrow { InscripcionNoEncontradoException(id) }
         return InscripcionResponse.fromEntity(inscripcion)

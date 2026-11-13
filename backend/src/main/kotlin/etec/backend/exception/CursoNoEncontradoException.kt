@@ -1,4 +1,4 @@
 package etec.backend.exception
 
-class CursoNoEncontradoException(id: Int) :
+class CursoNoEncontradoException(id: Long) :
     RuntimeException("Curso no encontrado con el ID: $id")

@@ -4,8 +4,8 @@ import jakarta.validation.constraints.NotNull
 
 data class InscripcionesRequest(
     @field:NotNull(message = "El ID del estudiante es obligatorio")
-    val estudianteId: Int,
+    val estudianteId: Long,
 
     @field:NotNull(message = "El ID del curso es obligatorio")
-    val cursoId: Int
+    val cursoId: Long
 )

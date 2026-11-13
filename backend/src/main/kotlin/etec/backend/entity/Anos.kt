@@ -12,8 +12,17 @@ import jakarta.persistence.Table
 class Ano(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Int? = null,
+    var id: Long? = null,
 
-    @Column(name = "curso_id", nullable = false)
-    var cursoId: Int = 0
+    // Número de año de cursada (1 a 6)
+    @Column(nullable = false, unique = true)
+    var numero: Int = 0,
+
+    // Texto para mostrar, ej: "1° Año"
+    @Column(nullable = false, length = 50)
+    var nombre: String = "",
+
+    // Eje temático del año, ej: "Primeros pasos y lógica"
+    @Column(length = 120)
+    var foco: String? = null
 )

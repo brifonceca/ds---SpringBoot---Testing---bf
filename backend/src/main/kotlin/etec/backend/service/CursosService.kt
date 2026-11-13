@@ -24,7 +24,7 @@ class CursosService(
     }
 
     @Transactional(readOnly = true)
-    fun obtener(id: Int): CursosResponse {
+    fun obtener(id: Long): CursosResponse {
         val curso = cursosRepository.findById(id)
             .orElseThrow { CursoNoEncontradoException(id) }
         return CursosResponse.fromEntity(curso)
@@ -36,7 +36,9 @@ class CursosService(
             .orElseThrow { AnoNoEncontradoException(req.anoId) }
 
         val nuevoCurso = Curso(
+            slug = req.slug,
             nombre = req.nombre,
+            descripcion = req.descripcion,
             ano = ano
         )
         val guardado = cursosRepository.save(nuevoCurso)

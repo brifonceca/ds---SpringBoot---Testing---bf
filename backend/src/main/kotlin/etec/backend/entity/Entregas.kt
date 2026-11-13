@@ -15,12 +15,12 @@ import jakarta.persistence.Table
 class Entrega(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Int? = null,
+    var id: Long? = null,
 
     @Column(nullable = false, length = 120)
     var nombre: String = "",
 
-    @Column(name = "codigo_enviado", columnDefinition = "TEXT")
+    @Column(name = "codigo_enviado", length = 120)
     var codigoEnviado: String? = null,
 
     @Column(length = 50)

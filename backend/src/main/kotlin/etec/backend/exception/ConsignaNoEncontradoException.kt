@@ -1,4 +1,4 @@
 package etec.backend.exception
 
-class ConsignaNoEncontradoException(id: Int) :
+class ConsignaNoEncontradoException(id: Long) :
     RuntimeException("Consigna no encontrada con el ID: $id")

@@ -15,12 +15,12 @@ import jakarta.persistence.Table
 class Consigna(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Int? = null,
+    var id: Long? = null,
 
     @Column(nullable = false, length = 120)
     var titulo: String = "",
 
-    @Column(columnDefinition = "TEXT")
+    @Column(length = 255)
     var descripcion: String? = null,
 
     @ManyToOne(fetch = FetchType.LAZY)

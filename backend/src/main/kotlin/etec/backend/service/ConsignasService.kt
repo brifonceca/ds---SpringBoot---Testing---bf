@@ -24,7 +24,7 @@ class ConsignasService(
     }
 
     @Transactional(readOnly = true)
-    fun obtener(id: Int): ConsignasResponse {
+    fun obtener(id: Long): ConsignasResponse {
         val consigna = consignasRepository.findById(id)
             .orElseThrow { ConsignaNoEncontradoException(id) }
         return ConsignasResponse.fromEntity(consigna)

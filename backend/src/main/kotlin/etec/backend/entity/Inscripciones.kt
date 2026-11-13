@@ -14,7 +14,7 @@ import jakarta.persistence.Table
 class Inscripcion(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Int? = null,
+    var id: Long? = null,
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "estudiantes_id", nullable = false)
